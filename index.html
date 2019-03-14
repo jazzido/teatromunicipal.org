@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>¿Ya está abierto el Teatro Municipal de Bahía Blanca?</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
+    <link rel="icon" href="img/favicon.png" />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arapey:400i,400
+      |Ubuntu:700"
+      rel="stylesheet"
+    />
+
+    <meta name="theme-color" content="#fafafa" />
+
+    <script>
+      daysClosed = Math.round(
+        (Date.now() - new Date(2019, 2, 12)) / (1000 * 60 * 60 * 24)
+      );
+    </script>
+
+    <meta
+      content="El Teatro Municipal de Bahía Blanca está cerrado desde el 12 de Marzo de 2019"
+      property="og:description"
+    />
+
+    <meta content="https://teatromunicipal.org/" property="og:url" />
+
+    <meta content="/icons/android-chrome-512x512.png" property="og:image" />
+    <meta content="512" property="og:image:width" />
+    <meta content="512" property="og:image:height" />
+  </head>
+
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <div id="content">
+      <div id="pregunta">
+        ¿Ya está abierto el Teatro Municipal de Bahía Blanca?
+      </div>
+      <div id="respuesta">NO</div>
+      <div id="tiempo">
+        Está cerrado hace <b><span></span> días</b>,
+        <a
+          href="https://www.lanueva.com/nota/2019-3-12-9-17-0-cierran-por-tiempo-indeterminado-el-teatro-municipal-esperan-un-informe-sobre-el-estado-del-edificio"
+          target="_blank"
+          >por decisión del gobierno municipal</a
+        >
+      </div>
+    </div>
+    <div id="footer">
+      Un sitio web de
+      <a href="https://jazzido.com" target="_blank">Manuel Aristarán</a> —
+      <a href="https://github.com/jazzido/teatro" target="_blank"
+        >Código fuente</a
+      >
+      <br />
+      <a
+        href="https://commons.wikimedia.org/wiki/File:1169_Teatro_Municipal_Bahia_Blanca.jpg?uselang=es"
+        target="_blank"
+        >Fotografía de <i>sibeas</i></a
+      >, reutilizada bajo licencia Creative Commons Genérica de
+      Atribución/Compartir-Igual 3.0
+    </div>
+    <script>
+      document.querySelector("#tiempo b span").innerHTML = daysClosed;
+    </script>
+  </body>
+</html>
