@@ -18,12 +18,16 @@
       rel="stylesheet"
     />
 
-    <meta name="theme-color" content="#fafafa" />
+    <script src="js/easytimer.js"></script>
 
     <script>
-      daysClosed = Math.round(
-        (Date.now() - new Date(2019, 2, 12)) / (1000 * 60 * 60 * 24)
-      );
+      closureDate = new Date(2019, 2, 12, 0, 0);
+      secondsClosed = Math.round((Date.now() - closureDate) / 1000);
+      timer = new easytimer.Timer();
+      timer.start({
+        precision: "seconds",
+        startValues: { seconds: secondsClosed }
+      });
     </script>
 
     <meta
@@ -38,20 +42,14 @@
   </head>
 
   <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
     <div id="content">
       <div id="pregunta">
         ¿Ya está abierto el Teatro Municipal de Bahía Blanca?
       </div>
       <div id="respuesta">NO</div>
       <div id="tiempo">
-        Está cerrado hace <b><span></span> días</b>,
+        Está cerrado hace <b id="days"></b> días, <b id="hours"></b> horas,
+        <b id="minutes"></b> minutos y <b id="seconds"></b> segundos,
         <a
           href="https://www.lanueva.com/nota/2019-3-12-9-17-0-cierran-por-tiempo-indeterminado-el-teatro-municipal-esperan-un-informe-sobre-el-estado-del-edificio"
           target="_blank"
@@ -74,7 +72,25 @@
       Atribución/Compartir-Igual 3.0
     </div>
     <script>
-      document.querySelector("#tiempo b span").innerHTML = daysClosed;
+      var tiempo = document.querySelector("#tiempo");
+      var days = tiempo.querySelector("#days");
+      var hours = tiempo.querySelector("#hours");
+      var minutes = tiempo.querySelector("#minutes");
+      var seconds = tiempo.querySelector("#seconds");
+
+      var values = timer.getTimeValues();
+      days.innerHTML = values.days;
+      hours.innerHTML = values.hours;
+      minutes.innerHTML = values.minutes;
+      seconds.innerHTML = values.seconds;
+
+      timer.addEventListener("secondsUpdated", function(e) {
+        var values = timer.getTimeValues();
+        days.innerHTML = values.days;
+        hours.innerHTML = values.hours;
+        minutes.innerHTML = values.minutes;
+        seconds.innerHTML = values.seconds;
+      });
     </script>
   </body>
 </html>
